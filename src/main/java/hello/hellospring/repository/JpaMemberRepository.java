@@ -1,7 +1,5 @@
 package hello.hellospring.repository;
-
 import hello.hellospring.domain.Member;
-
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
@@ -28,19 +26,18 @@ public class JpaMemberRepository implements MemberRepository {
     }
 
     @Override
-    public Optional<Member> findByName(String name) {
-        List <Member> result = em.createQuery("select m from Member m where m.name = :name", Member.class)
-                .setParameter("name", name)
-                .getResultList();
-
-        return result.stream().findAny();
-    }
-
-    @Override
     public List<Member> findAll() {
         //ctrl + alt + N
         //테이블 대상으로 쿼리를 날리는게 아니라 객체를 대상으로 쿼리를 날린다.
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
+    }
+
+    @Override
+    public Optional<Member> findByName(String name) {
+        List<Member> result = em.createQuery("select m from Member m where m.name = :name", Member.class)
+                .setParameter("name", name)
+                .getResultList();
+        return result.stream().findAny();
     }
 }

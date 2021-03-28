@@ -13,7 +13,6 @@ public class Member {
     private Long id;
 
     //이러한 어노테이션을 가지고 DB와 매핑하는 것이다.
-    @Column(name = "username")
     private String name;
 
 

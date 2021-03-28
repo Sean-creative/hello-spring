@@ -4,12 +4,15 @@ import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-// 회원서비스는 회원 레포지토리랑 도메인을 활용해서 실제 비즈니스 로직을 작성하는 것이다.
+// JPA로 데이터를 저장하고 변경할 떄는 써줘야함
+@Transactional
 public class MemberService {
+    // 회원서비스는 회원 레포지토리랑 도메인을 활용해서 실제 비즈니스 로직을 작성하는 것이다.
 
     private final MemberRepository memberRepository;
 
